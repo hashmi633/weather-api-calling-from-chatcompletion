@@ -1,0 +1,1 @@
+add package openai "poetry add openai"

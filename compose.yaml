@@ -1,0 +1,31 @@
+version: '3.8'
+name: template-30
+services:
+  weather:
+    container_name: weather-forecast
+    build: 
+      context: ./project
+      dockerfile: Dockerfile
+    volumes:
+      - ./project:/code
+    ports:
+      - "8001:8001"
+    networks:
+      - my-api-net
+
+  jupyter:
+    container_name: "jupyter"
+    build:
+      context:  ./code
+      dockerfile: Dockerfile
+    volumes:
+      - ./code:/code
+    ports:
+      - "8888:8888"
+    networks:
+      - my-api-net
+
+networks:
+  my-api-net: # custom network
+    driver: bridge 
+  
